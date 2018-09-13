@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        浏览器会解释并执行位于 <script> 和 </script> 之间的 JavaScript。
+        那些老旧的实例可能会在 <script> 标签中使用 type="text/javascript"。
+        现在已经不必这样做了。JavaScript 是所有现代浏览器以及 HTML5 中的默认脚本语言
+    -->
+    <script type="text/javascript">
+
+        // if(true){
+        //     var a = 5 ;
+        // }
+        // alert(a) ;   //输出是5，因为 a 的作用域是声明了 a 的那个函数（或全局范围），
+                        //因为这里没有函数，ifh只是语句块，所以编程全局变量了
+                        /*
+                            ECMAScript 6 之前的JavaScript没有 语句块 作用域
+                            ECMAScript是一个国际通过的标准化脚本语言。
+                            JavaScript由ECMAScript和DOM、BOM三者组成。
+                            可以简单理解为：ECMAScript是JavaScript的语言规范，JavaScript是ECMAScript的实现和扩展。
+                            JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。ECMAScript 6(简称ES6)中新增了块级作用域。 
+                            
+                            块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域
+                            块作用域的变量可以理解为是
+                            语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量
+                        */
+
+        // function test(){
+        //     var b = 5 ;
+        // }
+        // alert(b)        //这种情况会出现Uncaught ReferenceError: b is not defined错误
+                        //因为b是局部变量，作用域在函数内部，在外部访问会报错
+                        /*
+                            在函数内部声明的变量，叫做局部变量，因为它只能在该函数内部访问
+                            ECMAScript 6 之前的JavaScript没有 语句块 作用域；
+                            相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量
+                            比如上面的那个a变量就是这样
+                        */
+        var myvar = "aaa" ;
+        (function(){
+            console.log(myvar) ;
+            var myvar = "bbb" ;
+        })() ;
+        /*
+            上面输出的值为undefined
+            你会发现你又重新定义了一个局部变量myvar，和全局变量重名了，这导致myvar瞬间变成局部变量而外部访问不到了
+            只有你在$(funciton(){})里这样定义一个跟全局变量重名的局部变量，才会出现这种情况！！
+            上面是一个javascript的匿名函数()()这种形式
+            没有名字的函数故为匿名函数
+            没有名字就无法像普通函数那样随时随地调用了，所以在他定义完成后就马上调用他，后面的括号()是运行这个函数的意思。
+
+            这种情况在javascript中是称之为：变量声明提升
+            JavaScript 变量的另一特别之处是，你可以引用稍后声明的变量而不会引发异常。
+            这一概念称为变量声明提升(hoisting)；
+            JavaScript 变量感觉上是被“提升”或移到了函数或语句的顶部。
+            然而提升后的变量将返回 undefined 值。
+            所以在使用或引用某个变量之后进行声明和初始化操作，这个被提升的引用仍将得到 undefined 值
+            由于存在变量声明提升，一个函数中所有的var语句应尽可能地放在接近函数顶部的地方。这将大大提升程序代码的清晰度
+
+            需要注意的是：
+            在 ECMAScript 2015 中，let（const）将不会提升变量到代码块的顶部。
+            因此，在变量声明之前引用这个变量，将抛出错误ReferenceError。
+            这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。
+
+            可以参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#Variable_scope
+        */
+
+        /*
+            函数提升：
+            对于函数，只有函数声明会被提升到顶部，而不包括函数表达式。
+            比如下面，第一个是函数声明，第二个是函数表达式
+        */
+        // foo() ; //输出aaaaa
+        // function foo(){
+        //     console.log("aaaaa") ;
+        // }
+
+        //下面这种就是函数表达式
+        // baz() ;
+        // var baz = function(){
+        //     console.log("bbbbb") ;
+        // } ;//这种情况会抛出异常：Uncaught TypeError: baz is not a function
+
+        /*==================================================================常量*/
+        /*
+            可以用关键字 const 创建一个只读的常量。
+            常量标识符的命名规则和变量相同：必须以字母、下划线或美元符号开头并可以包含有字母、数字或下划线。
+
+
+        */
+        const pre = "这是一个常量" ;
+        
+        /*
+            1：常量不可以通过赋值改变其值，也不可以在脚本运行时重新声明。它必须被初始化为某个值。
+
+            2：常量的作用域规则与 let 块级作用域变量相同。若省略const关键字，则该标识符将被视为变量。
+
+            3：在同一作用域中，不能使用与变量名或函数名相同的名字来命名常量。
+        */
+
+        //这两种会直接抛出一个异常
+        // function f(){} ;
+        // const f = 5 ;   //Uncaught SyntaxError: Identifier 'f' has already been declared
+
+        function f() {
+            const a = 5 ;
+            var a ;
+        }
+        //不过对象和数组内容是不受保护的，这其实和java是一样的
+        const obj = {"aa":"bb"} ;
+        obj.key = "ccc" ;
+
+        const obj1 = ["html","css"] ;
+        obj1.push("javascript") ;
+        console.log(obj1) ; //输出html，css，javascript
+
+        /*
+            这里再稍微补充一点变量的定义内容：
+            var、let、const的区别
+            1：var定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问。
+            2：let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问。
+            3：const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，而且不能修改。
+        */
+        // 块作用域
+        {
+            var a = 1;
+            let b = 2;
+            const c = 3;
+            // c = 4; // 报错
+            var aa;
+            let bb;
+            // const cc; // 报错
+            console.log(a); // 1
+            console.log(b); // 2
+            console.log(c); // 3
+            console.log(aa); // undefined
+            console.log(bb); // undefined
+        }
+        console.log(a); // 1
+        // console.log(b); // 报错
+        // console.log(c); // 报错
+
+        // 函数作用域
+        (function A() {
+            var d = 5;
+            let e = 6;
+            const f = 7;
+            console.log(d); // 5
+            console.log(e); // 6  (在同一个{ }中,也属于同一个块，可以正常访问到)
+            console.log(f); // 7  (在同一个{ }中,也属于同一个块，可以正常访问到)
+
+        })();
+        // console.log(d); // 报错
+        // console.log(e); // 报错
+        // console.log(f); // 报错
+    </script>
+</body>
+</html>

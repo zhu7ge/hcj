@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        一：数据类型
+            JavaScript语言可以识别下面 7 种不同类型的值:
+            1: 六种原型数据类型
+                1): Boolean 布尔值，ture和false 
+                2): null,一个表明null值的关键字，js是大小写敏感的null和NULL是不同的
+                3): undefined,变量未定义时的属性
+                4): Number,表示数字，比如45或者3.1415926
+                5): String,表示字符串，比如“hello”
+                6): Symbol( 在 ECMAScript 6 中新添加的类型).它的实例是唯一且不可改变的
+
+            2: 对象类型Object
+
+            Objects 和 functions 是本语言的其他两个基本要素。
+            你可以将对象视为存放值的命名容器，而将函数视为你的应用程序能够执行的过程(procedures)。
+
+        二：数据类型转换
+            JavaScript是一种动态类型语言(dynamically typed language)。
+            这意味着你声明变量时可以不必指定数据类型，而数据类型会在脚本执行时根据需要自动转换。因此，你可以这样来定义变量
+        */
+        var answer = 45 ;
+        //可以给同一个变量赋予一个字符串值
+        answer = "hello world" ;
+        //因为javascript是动态类型的，这样赋值不会出错
+
+        /*
+            在涉及加法运算符(+)的数字和字符串表达式中，JavaScript 会把数字值转换为字符串
+        */
+        x = "age is " + 45 ;
+        y = "45" + "years old" ;
+
+        //但需要注意就是：在涉及其他运算符(如建号 -)时,javascript不会把数字变为字符串
+        z = "45" - 5 ;
+        console.log(x + "=" + y + "=" + z) ;
+
+        /*
+            字符串转换为数字
+            parseInt()和parseFloat()
+            parseInt 仅能够返回整数，所以使用它会丢失小数部分。
+            另外，调用 parseInt 时最好总是带上进制(radix) 参数，这个参数用于指定使用哪一种进制。
+            参考：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#Variable_scope
+
+            有关对象字面量的内容可以看下，这块是新的内容
+            以及增强的对象字面量这个是ES2015扩展的内容
+        */
+
+    </script>
+</body>
+</html>

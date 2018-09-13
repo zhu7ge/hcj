@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试vscode</title>
+</head>
+<body>
+    <!-- 这是一个htl注释 -->
+    <h1>快速开始html结构代码，在第一行输入!，然后按tab键，可以直接输出html的结构</h1>
+    <h2>新版vscode，如果要显示中文，需要先安装中文简体语言包，再F1(调出命令查找的快捷键)修改locale.json中添加localte="zh-cn"即可</h2>
+    <h3>vscode,添加open-in-browser插件，可以直接再html代码区域右键，在浏览器运行，修改默认浏览器的话
+        找到设置-> 首选项 -> 输入open-in-browser在右边的区域中输入要更改的浏览器的名称即可，比如谷歌chrome,火狐firefox
+    </h3>
+    <h4>vscode的主题设置可以使用light主题，用黑色主题的有点看不清，在文件 -> 首选项 -> 颜色主题中进行修改</h4>
+    <h5>如果要修改vscode的编辑区域的背景色，暂时只能通过修改主题文件的颜色来进行修改
+        可以直接到VSCode的安装目录下找到：\resources\app\extensions这个目录，
+        该目录下以theme-开头的文件夹表示其是主题文件夹，按照自己当前使用的主题名称去找到对应的文件夹进去修改即可
+        "$schema": "vscode://schemas/color-theme",
+	    "name": "Light (Visual Studio)",
+	    "include": "./light_defaults.json",
+	    "colors": {
+		    "editor.background": "#C7EDCC"
+	        },
+        "tokenColors": 
+        比如我在我这个主题中添加了colors这段，原来里面是没有的，添加了编辑区域的背景颜色
+        参考：https://blog.csdn.net/u013506207/article/details/80529858 和
+        https://www.cnblogs.com/garvenc/p/vscode_customize_color_theme.html
+        这两篇文章即可。
+    </h5>
+    <h6> vscode删除整行快捷键 ctrl + shift + k </h6>
+    <h5> vscode的编码设置可以F1输入encoding也可以直接点击左下角的齿轮输入encoding来进行修改</h5>
+</body>
+</html>
